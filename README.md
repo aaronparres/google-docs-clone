@@ -1,3 +1,3 @@
 # google-docs-clone
 
-React + Node.js (Socket.IO) + mongoDB (mongoose)
+React + Node.js (Socket.IO) + mongoDB (mongoose) + Quill
