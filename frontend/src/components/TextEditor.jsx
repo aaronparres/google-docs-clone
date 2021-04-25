@@ -22,6 +22,7 @@ const TextEditor = () => {
   const [socket, setSocket] = useState();
   const [quill, setQuill] = useState();
 
+  // Init Quill
   useEffect(() => {
     const s = io("http://localhost:3001");
     setSocket(s);
@@ -31,6 +32,7 @@ const TextEditor = () => {
     };
   }, []);
 
+  // Load Document
   useEffect(() => {
     if (socket == null || quill == null) return;
 
@@ -42,6 +44,7 @@ const TextEditor = () => {
     socket.emit("get-document", documentId);
   }, [socket, quill, documentId]);
 
+  // Save Document
   useEffect(() => {
     if (socket == null || quill == null) return;
 
@@ -54,6 +57,7 @@ const TextEditor = () => {
     };
   }, [socket, quill]);
 
+  // Get Document Changes
   useEffect(() => {
     if (socket == null || quill == null) return;
 
@@ -67,6 +71,7 @@ const TextEditor = () => {
     };
   }, [socket, quill]);
 
+  // Update Document Changes
   useEffect(() => {
     if (socket == null || quill == null) return;
 
@@ -81,6 +86,7 @@ const TextEditor = () => {
     };
   }, [socket, quill]);
 
+  // Init Wrapper
   const wrapperRef = useCallback((wrapper) => {
     if (wrapper == null) return;
 
@@ -95,6 +101,7 @@ const TextEditor = () => {
     q.setText("Loading...");
     setQuill(q);
   }, []);
+
   return <div className="container" ref={wrapperRef}></div>;
 };
 
